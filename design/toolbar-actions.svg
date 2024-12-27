@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 主題色漸層 -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- 陰影效果 -->
+    <filter id="dropShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="1"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="800" fill="#f8fafc"/>
+
+  <!-- 標題區域 -->
+  <g transform="translate(40,40)">
+    <text font-family="Arial" font-size="24" font-weight="bold" fill="#0f172a">工具欄操作指南</text>
+    <text x="0" y="30" font-family="Arial" font-size="14" fill="#64748b">詳細的功能說明和快捷操作指引</text>
+  </g>
+
+  <!-- 1. Markdown 編輯工具說明 -->
+  <g transform="translate(40,120)">
+    <text font-family="Arial" font-size="18" font-weight="bold" fill="#334155">1. Markdown 編輯工具</text>
+
+    <!-- 標題工具 -->
+    <g transform="translate(0,40)">
+      <rect width="40" height="40" rx="6" fill="#f1f5f9" filter="url(#dropShadow)"/>
+      <text x="14" y="26" font-family="Arial" font-size="16" fill="#64748b">H</text>
+
+      <!-- 說明文字 -->
+      <g transform="translate(60,0)">
+        <text y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">標題工具</text>
+        <text y="36" font-family="Arial" font-size="14" fill="#64748b">點擊後顯示 H1-H6 選項面板</text>
+        <!-- 快捷鍵提示 -->
+        <rect x="0" y="44" width="100" height="24" rx="4" fill="#e2e8f0"/>
+        <text x="10" y="60" font-family="Arial" font-size="12" fill="#64748b">Cmd + 1~6</text>
+      </g>
+    </g>
+
+    <!-- 文字格式工具組 -->
+    <g transform="translate(0,120)">
+      <!-- 粗體 -->
+      <g>
+        <rect width="40" height="40" rx="6" fill="#f1f5f9" filter="url(#dropShadow)"/>
+        <text x="14" y="26" font-family="Arial" font-size="16" font-weight="bold" fill="#64748b">B</text>
+
+        <g transform="translate(60,0)">
+          <text y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">粗體</text>
+          <text y="36" font-family="Arial" font-size="14" fill="#64748b">將選中文字加粗</text>
+          <rect x="0" y="44" width="100" height="24" rx="4" fill="#e2e8f0"/>
+          <text x="10" y="60" font-family="Arial" font-size="12" fill="#64748b">Cmd + B</text>
+        </g>
+      </g>
+
+      <!-- 斜體 -->
+      <g transform="translate(250,0)">
+        <rect width="40" height="40" rx="6" fill="#f1f5f9" filter="url(#dropShadow)"/>
+        <text x="16" y="26" font-family="Arial" font-size="16" font-style="italic" fill="#64748b">I</text>
+
+        <g transform="translate(60,0)">
+          <text y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">斜體</text>
+          <text y="36" font-family="Arial" font-size="14" fill="#64748b">將選中文字變為斜體</text>
+          <rect x="0" y="44" width="100" height="24" rx="4" fill="#e2e8f0"/>
+          <text x="10" y="60" font-family="Arial" font-size="12" fill="#64748b">Cmd + I</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 插入工具組 -->
+    <g transform="translate(0,200)">
+      <!-- 連結 -->
+      <g>
+        <rect width="40" height="40" rx="6" fill="#f1f5f9" filter="url(#dropShadow)"/>
+        <text x="12" y="26" font-family="Arial" font-size="16" fill="#64748b">🔗</text>
+
+        <g transform="translate(60,0)">
+          <text y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">插入連結</text>
+          <text y="36" font-family="Arial" font-size="14" fill="#64748b">添加超連結，支援拖拽URL</text>
+          <rect x="0" y="44" width="100" height="24" rx="4" fill="#e2e8f0"/>
+          <text x="10" y="60" font-family="Arial" font-size="12" fill="#64748b">Cmd + K</text>
+        </g>
+      </g>
+
+      <!-- 圖片 -->
+      <g transform="translate(250,0)">
+        <rect width="40" height="40" rx="6" fill="#f1f5f9" filter="url(#dropShadow)"/>
+        <text x="12" y="26" font-family="Arial" font-size="16" fill="#64748b">📷</text>
+
+        <g transform="translate(60,0)">
+          <text y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">插入圖片</text>
+          <text y="36" font-family="Arial" font-size="14" fill="#64748b">支援拖拽上傳和URL引用</text>
+          <rect x="0" y="44" width="100" height="24" rx="4" fill="#e2e8f0"/>
+          <text x="10" y="60" font-family="Arial" font-size="12" fill="#64748b">Cmd + Shift + I</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 2. 組件工具欄 -->
+  <g transform="translate(40,400)">
+    <text font-family="Arial" font-size="18" font-weight="bold" fill="#334155">2. 組件工具欄</text>
+
+    <!-- 統計卡片 -->
+    <g transform="translate(0,40)">
+      <rect width="120" height="40" rx="20" fill="url(#primaryGradient)" filter="url(#dropShadow)"/>
+      <text x="20" y="26" font-family="Arial" font-size="14" fill="#ffffff">統計卡片</text>
+
+      <!-- 操作說明 -->
+      <g transform="translate(140,0)">
+        <text y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">GitHub 統計卡片</text>
+        <text y="36" font-family="Arial" font-size="14" fill="#64748b">自動獲取並展示您的 GitHub 統計數據</text>
+        <!-- 支援的卡片類型 -->
+        <g transform="translate(0,50)">
+          <rect width="80" height="24" rx="4" fill="#e2e8f0"/>
+          <text x="10" y="16" font-family="Arial" font-size="12" fill="#64748b">語言統計</text>
+
+          <rect x="90" width="80" height="24" rx="4" fill="#e2e8f0"/>
+          <text x="100" y="16" font-family="Arial" font-size="12" fill="#64748b">提交記錄</text>
+
+          <rect x="180" width="80" height="24" rx="4" fill="#e2e8f0"/>
+          <text x="190" y="16" font-family="Arial" font-size="12" fill="#64748b">streak 統計</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 技能徽章 -->
+    <g transform="translate(0,140)">
+      <rect width="120" height="40" rx="20" fill="url(#primaryGradient)" filter="url(#dropShadow)"/>
+      <text x="20" y="26" font-family="Arial" font-size="14" fill="#ffffff">技能徽章</text>
+
+      <!-- 操作說明 -->
+      <g transform="translate(140,0)">
+        <text y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">技能徽章生成器</text>
+        <text y="36" font-family="Arial" font-size="14" fill="#64748b">快速添加技能徽章，支援自定義樣式</text>
+        <!-- 徽章預覽 -->
+        <g transform="translate(0,50)">
+          <image x="0" y="0" width="80" height="24" href="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D"/>
+          <image x="90" y="0" width="80" height="24" href="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 3. 主題切換 -->
+  <g transform="translate(40,620)">
+    <text font-family="Arial" font-size="18" font-weight="bold" fill="#334155">3. 主題切換</text>
+
+    <g transform="translate(0,40)">
+      <rect width="40" height="40" rx="20" fill="#1e293b" filter="url(#dropShadow)"/>
+      <path d="M10 20 A10 10 0 0 0 30 20 A10 10 0 0 1 10 20" fill="#ffffff"/>
+
+      <!-- 說明 -->
+      <g transform="translate(60,0)">
+        <text y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">深色/淺色主題</text>
+        <text y="36" font-family="Arial" font-size="14" fill="#64748b">自動同步系統主題，支援手動切換</text>
+        <rect x="0" y="44" width="120" height="24" rx="4" fill="#e2e8f0"/>
+        <text x="10" y="60" font-family="Arial" font-size="12" fill="#64748b">Cmd + Shift + L</text>
+      </g>
+    </g>
+  </g>
+</svg>

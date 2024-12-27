@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- 定義漸層和效果 -->
+  <defs>
+    <!-- 主背景漸層 -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- 主題色漸層 -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- 玻璃擬態效果 -->
+    <filter id="glassEffect">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 1  0 1 0 0 1  0 0 1 0 1  0 0 0 19 -9"/>
+    </filter>
+
+    <!-- 陰影效果 -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="1"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.1"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1920" height="1080" fill="url(#bgGradient)"/>
+
+  <!-- 主應用容器 -->
+  <rect x="40" y="20" width="1840" height="1040" rx="16" fill="#ffffff" filter="url(#dropShadow)"/>
+
+  <!-- 頂部工具欄 -->
+  <g transform="translate(40,20)">
+    <!-- 工具欄背景 -->
+    <rect width="1840" height="60" rx="16" fill="#f8fafc" filter="url(#glassEffect)"/>
+
+    <!-- 視窗控制按鈕 -->
+    <g transform="translate(20,20)">
+      <circle cx="10" cy="10" r="6" fill="#ff5f57"/>
+      <circle cx="30" cy="10" r="6" fill="#febc2e"/>
+      <circle cx="50" cy="10" r="6" fill="#28c840"/>
+    </g>
+
+    <!-- 工具欄按鈕組 -->
+    <g transform="translate(100,15)">
+      <rect width="30" height="30" rx="6" fill="#f1f5f9"/>
+      <text x="8" y="20" font-family="Arial" font-size="14" fill="#64748b">⌘</text>
+    </g>
+
+    <!-- 主題切換 -->
+    <g transform="translate(1780,15)">
+      <rect width="30" height="30" rx="15" fill="#1e293b"/>
+      <path d="M1790 30 A8 8 0 0 0 1800 30 A8 8 0 0 1 1790 30" fill="#ffffff"/>
+    </g>
+  </g>
+
+  <!-- 左側邊欄 -->
+  <g transform="translate(40,80)">
+    <!-- 邊欄背景 -->
+    <rect width="280" height="980" fill="#f8fafc"/>
+
+    <!-- 模板分類 -->
+    <g transform="translate(20,20)">
+      <text font-family="Arial" font-size="14" font-weight="bold" fill="#64748b">模板分類</text>
+
+      <!-- 搜尋框 -->
+      <g transform="translate(0,30)">
+        <rect width="240" height="36" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="40" y="24" font-family="Arial" font-size="13" fill="#94a3b8">搜尋模板...</text>
+        <path d="M20 20 L24 24 M15 15 A6 6 0 1 1 21 21" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+      </g>
+
+      <!-- 模板列表 -->
+      <g transform="translate(0,80)">
+        <!-- 個人簡介類 -->
+        <g>
+          <rect width="240" height="50" rx="8" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="1"/>
+          <text x="50" y="30" font-family="Arial" font-size="14" fill="#0369a1">個人簡介模板</text>
+          <circle cx="25" cy="25" r="12" fill="#0ea5e9"/>
+          <path d="M20 25 L24 29 L31 22" stroke="#ffffff" stroke-width="2" fill="none"/>
+        </g>
+
+        <!-- 技能展示類 -->
+        <g transform="translate(0,60)">
+          <rect width="240" height="50" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="50" y="30" font-family="Arial" font-size="14" fill="#64748b">技能展示模板</text>
+          <circle cx="25" cy="25" r="12" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+        </g>
+
+        <!-- 專案展示類 -->
+        <g transform="translate(0,120)">
+          <rect width="240" height="50" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="50" y="30" font-family="Arial" font-size="14" fill="#64748b">專案展示模板</text>
+          <circle cx="25" cy="25" r="12" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+        </g>
+
+        <!-- 數據統計類 -->
+        <g transform="translate(0,180)">
+          <rect width="240" height="50" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="50" y="30" font-family="Arial" font-size="14" fill="#64748b">數據統計模板</text>
+          <circle cx="25" cy="25" r="12" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+        </g>
+
+        <!-- 社交連結類 -->
+        <g transform="translate(0,240)">
+          <rect width="240" height="50" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="50" y="30" font-family="Arial" font-size="14" fill="#64748b">社交連結模板</text>
+          <circle cx="25" cy="25" r="12" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+        </g>
+
+        <!-- 自定義模板 -->
+        <g transform="translate(0,300)">
+          <rect width="240" height="50" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="50" y="30" font-family="Arial" font-size="14" fill="#64748b">自定義模板</text>
+          <circle cx="25" cy="25" r="12" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 主編輯區域 -->
+  <g transform="translate(320,80)">
+    <!-- 編輯器背景 -->
+    <rect width="960" height="980" fill="#ffffff" filter="url(#dropShadow)"/>
+
+    <!-- 編輯器工具列 -->
+    <g transform="translate(20,20)">
+      <rect width="920" height="40" rx="8" fill="#f8fafc"/>
+
+      <!-- Markdown 工具按鈕組 -->
+      <g transform="translate(10,5)">
+        <!-- 標題 -->
+        <rect width="30" height="30" rx="4" fill="#f1f5f9"/>
+        <text x="8" y="20" font-family="Arial" font-size="14" fill="#64748b">H</text>
+
+        <!-- 粗體 -->
+        <g transform="translate(40,0)">
+          <rect width="30" height="30" rx="4" fill="#f1f5f9"/>
+          <text x="8" y="20" font-family="Arial" font-size="14" font-weight="bold" fill="#64748b">B</text>
+        </g>
+
+        <!-- 斜體 -->
+        <g transform="translate(80,0)">
+          <rect width="30" height="30" rx="4" fill="#f1f5f9"/>
+          <text x="11" y="20" font-family="Arial" font-size="14" font-style="italic" fill="#64748b">I</text>
+        </g>
+
+        <!-- 連結 -->
+        <g transform="translate(120,0)">
+          <rect width="30" height="30" rx="4" fill="#f1f5f9"/>
+          <text x="8" y="20" font-family="Arial" font-size="14" fill="#64748b">🔗</text>
+        </g>
+
+        <!-- 圖片 -->
+        <g transform="translate(160,0)">
+          <rect width="30" height="30" rx="4" fill="#f1f5f9"/>
+          <text x="8" y="20" font-family="Arial" font-size="14" fill="#64748b">📷</text>
+        </g>
+
+        <!-- 列表 -->
+        <g transform="translate(200,0)">
+          <rect width="30" height="30" rx="4" fill="#f1f5f9"/>
+          <text x="8" y="20" font-family="Arial" font-size="14" fill="#64748b">•</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 編輯器內容區 -->
+    <g transform="translate(20,80)">
+      <rect width="920" height="880" rx="8" fill="#f8fafc"/>
+      <text x="20" y="40" font-family="JetBrains Mono" font-size="14" fill="#334155"># Hello 👋</text>
+      <text x="20" y="70" font-family="JetBrains Mono" font-size="14" fill="#64748b">I'm a developer...</text>
+    </g>
+  </g>
+
+  <!-- 右側預覽區域 -->
+  <g transform="translate(1280,80)">
+    <!-- 預覽區背景 -->
+    <rect width="600" height="980" fill="#ffffff" filter="url(#dropShadow)"/>
+
+    <!-- 預覽標題 -->
+    <g transform="translate(20,20)">
+      <text font-family="Arial" font-size="16" font-weight="bold" fill="#0f172a">即時預覽</text>
+    </g>
+
+    <!-- 預覽內容 -->
+    <g transform="translate(20,60)">
+      <rect width="560" height="900" rx="8" fill="#f8fafc"/>
+    </g>
+  </g>
+
+  <!-- 組件工具欄 -->
+  <g transform="translate(320,20)">
+    <rect width="960" height="60" rx="8" fill="#f8fafc"/>
+
+    <!-- 組件按鈕 -->
+    <g transform="translate(20,10)">
+      <rect width="100" height="40" rx="20" fill="url(#primaryGradient)"/>
+      <text x="20" y="25" font-family="Arial" font-size="12" fill="#ffffff">統計卡片</text>
+    </g>
+
+    <g transform="translate(140,10)">
+      <rect width="100" height="40" rx="20" fill="url(#primaryGradient)"/>
+      <text x="20" y="25" font-family="Arial" font-size="12" fill="#ffffff">技能徽章</text>
+    </g>
+  </g>
+</svg>
