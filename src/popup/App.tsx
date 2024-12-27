@@ -102,10 +102,13 @@ export default function App() {
   }
 
   return (
-    <div className="w-[400px] h-[600px] p-4 bg-white dark:bg-gray-800">
+    <div className="w-[400px] h-[600px] p-4 bg-white dark:bg-gray-800 overflow-hidden">
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">GitHub Profile AI Generator</h1>
-        <button onClick={() => setShowSettings(true)} className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+        <button
+          onClick={() => setShowSettings(true)}
+          className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+        >
           ⚙️
         </button>
       </div>
@@ -116,7 +119,7 @@ export default function App() {
           <select
             value={style}
             onChange={e => setStyle(e.target.value)}
-            className="w-full px-3 py-2 bg-white dark:bg-gray-700 border-[1px] border-solid border-gray-300 dark:border-gray-600 rounded-md shadow-sm"
+            className="w-full px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-[1px] border-solid border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
           >
             <option value="professional">專業簡潔</option>
             <option value="creative">活潑創意</option>
@@ -133,15 +136,16 @@ export default function App() {
             text-white font-medium
             transition-colors
             disabled:opacity-50 disabled:cursor-not-allowed
+            outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
           `}
         >
           {isGenerating ? "生成中..." : "一鍵生成 Profile"}
         </button>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 flex-1">
         <div className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">預覽</div>
-        <div className="w-full h-[400px] bg-gray-100 dark:bg-gray-900 rounded-md p-4 overflow-auto">
+        <div className="w-full h-[350px] bg-gray-50 dark:bg-gray-900 rounded-md p-4 overflow-auto border-[1px] border-solid border-gray-200 dark:border-gray-700">
           <MarkdownPreview content={content} />
         </div>
       </div>

@@ -2,7 +2,7 @@ import OpenAI from "openai";
 
 let openai: OpenAI | null = null;
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
   if (request.type === "INIT_OPENAI") {
     openai = new OpenAI({
       apiKey: request.apiKey,

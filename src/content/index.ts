@@ -20,7 +20,7 @@ async function getUserData() {
 }
 
 // 監聽來自 popup 的消息
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
   if (request.type === "CHECK_PROFILE_PAGE") {
     sendResponse({ isProfilePage: isProfilePage() });
   }
