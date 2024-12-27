@@ -23,6 +23,8 @@ function copyManifestAndAssets() {
 export default defineConfig({
   plugins: [UnoCSS(), react(), copyManifestAndAssets()],
   build: {
+    outDir: "dist",
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         popup: resolve(__dirname, "src/popup/index.html"),
@@ -30,7 +32,9 @@ export default defineConfig({
         background: resolve(__dirname, "src/background/index.ts"),
       },
       output: {
-        entryFileNames: "[name].js",
+        entryFileNames: "assets/[name].js",
+        chunkFileNames: "assets/[name].[hash].js",
+        assetFileNames: "assets/[name].[ext]",
       },
     },
   },

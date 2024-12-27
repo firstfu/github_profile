@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MarkdownPreview from "../components/MarkdownPreview";
 import Settings from "../components/Settings";
+import { storage } from "../utils/storage";
 
 interface GenerateResponse {
   success?: boolean;
@@ -20,31 +21,44 @@ export default function App() {
   const [content, setContent] = useState("");
   const [showSettings, setShowSettings] = useState(false);
   const [hasApiKey, setHasApiKey] = useState(false);
+  const [isProfilePage, setIsProfilePage] = useState(false);
 
   useEffect(() => {
     // 檢查是否已設定 API key
-    chrome.storage.sync.get(["openaiApiKey"], result => {
-      setHasApiKey(!!result.openaiApiKey);
-      if (!result.openaiApiKey) {
+    const checkApiKey = async () => {
+      const apiKey = await storage.get<string>("openaiApiKey");
+      console.log("API Key exists:", !!apiKey);
+      setHasApiKey(!!apiKey);
+      if (!apiKey) {
         setShowSettings(true);
       }
-    });
+    };
 
     // 檢查是否在 Profile 頁面
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      const tab = tabs[0];
-      const tabId = tab?.id;
-      if (tabId) {
-        chrome.tabs.sendMessage(tabId, { type: "CHECK_PROFILE_PAGE" }, response => {
-          if (!response?.isProfilePage) {
-            setContent("請前往您的 GitHub Profile 頁面使用此擴充功能");
-          }
-        });
+    const checkProfilePage = async () => {
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      if (!tab?.id) return;
+
+      try {
+        const response = await chrome.tabs.sendMessage(tab.id, { type: "CHECK_PROFILE_PAGE" });
+        console.log("Profile page check response:", response);
+        setIsProfilePage(response?.isProfilePage ?? false);
+        if (!response?.isProfilePage) {
+          setContent("請前往您的 GitHub Profile 頁面使用此擴充功能");
+        }
+      } catch (error) {
+        console.error("Error checking profile page:", error);
+        setContent("無法檢查頁面類型，請重新整理頁面後再試");
       }
-    });
+    };
+
+    checkApiKey();
+    checkProfilePage();
   }, []);
 
   const handleGenerate = async () => {
+    if (!hasApiKey || !isProfilePage) return;
+
     setIsGenerating(true);
     try {
       // 獲取用戶資料
@@ -84,14 +98,15 @@ export default function App() {
 
       setContent(response.data || "");
     } catch (error) {
-      console.error(error);
+      console.error("Generation error:", error);
       setContent("生成失敗，請稍後再試");
     } finally {
       setIsGenerating(false);
     }
   };
 
-  const handleSaveSettings = (apiKey: string) => {
+  const handleSaveSettings = async (apiKey: string) => {
+    await storage.set("openaiApiKey", apiKey);
     setHasApiKey(!!apiKey);
     setShowSettings(false);
     chrome.runtime.sendMessage({ type: "INIT_OPENAI", apiKey });
@@ -107,9 +122,10 @@ export default function App() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">GitHub Profile AI Generator</h1>
         <button
           onClick={() => setShowSettings(true)}
-          className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+          className="flex items-center gap-1 px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
         >
-          ⚙️
+          <span>設定</span>
+          <span className="text-lg">⚙️</span>
         </button>
       </div>
 
@@ -129,7 +145,7 @@ export default function App() {
 
         <button
           onClick={handleGenerate}
-          disabled={isGenerating || !hasApiKey}
+          disabled={isGenerating || !hasApiKey || !isProfilePage}
           className={`
             w-full py-2 px-4 rounded-md
             bg-blue-600 hover:bg-blue-700

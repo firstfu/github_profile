@@ -13,7 +13,7 @@
         "https://api.github.com/*"
     ],
     "action": {
-        "default_popup": "popup.html",
+        "default_popup": "src/popup/index.html",
         "default_icon": {
             "16": "assets/icons/icon16.png",
             "48": "assets/icons/icon48.png",
@@ -26,7 +26,7 @@
         "128": "assets/icons/icon128.png"
     },
     "background": {
-        "service_worker": "background.js",
+        "service_worker": "assets/background.js",
         "type": "module"
     },
     "content_scripts": [
@@ -35,7 +35,17 @@
                 "https://github.com/*"
             ],
             "js": [
-                "content.js"
+                "assets/content.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "assets/*"
+            ],
+            "matches": [
+                "<all_urls>"
             ]
         }
     ],
