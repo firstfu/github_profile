@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="400" height="500" fill="#ffffff"/>
+
+    <!-- 頂部 -->
+    <rect x="0" y="0" width="400" height="50" fill="#f3f4f6"/>
+    <text x="20" y="30" font-family="Arial" font-size="16" font-weight="bold" fill="#111827">GitHub Profile Generator</text>
+
+    <!-- 登入狀態 -->
+    <rect x="20" y="70" width="360" height="60" rx="8" fill="#f3f4f6"/>
+    <circle cx="50" cy="100" r="15" fill="#4b5563"/>
+    <text x="80" y="105" font-family="Arial" font-size="14" fill="#111827">GitHub 帳號狀態</text>
+
+    <!-- AI 設定 -->
+    <rect x="20" y="150" width="360" height="120" rx="8" fill="#f3f4f6"/>
+    <text x="40" y="180" font-family="Arial" font-size="14" font-weight="bold" fill="#111827">AI 生成設定</text>
+
+    <!-- 風格選擇 -->
+    <rect x="40" y="200" width="320" height="40" rx="4" fill="#ffffff" stroke="#d1d5db"/>
+    <text x="60" y="225" font-family="Arial" font-size="14" fill="#374151">選擇生成風格</text>
+
+    <!-- 快速操作 -->
+    <rect x="20" y="290" width="360" height="190" rx="8" fill="#f3f4f6"/>
+    <text x="40" y="320" font-family="Arial" font-size="14" font-weight="bold" fill="#111827">快速操作</text>
+
+    <!-- 操作按鈕 -->
+    <rect x="40" y="340" width="320" height="40" rx="4" fill="#2563eb"/>
+    <text x="165" y="365" font-family="Arial" font-size="14" fill="#ffffff">開始生成</text>
+
+    <rect x="40" y="390" width="320" height="40" rx="4" fill="#ffffff" stroke="#d1d5db"/>
+    <text x="165" y="415" font-family="Arial" font-size="14" fill="#374151">編輯現有</text>
+</svg>
