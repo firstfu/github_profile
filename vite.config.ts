@@ -66,6 +66,9 @@ export default defineConfig(async () => {
         "@": resolve(__dirname, "./src"),
       },
     },
+    css: {
+      postcss: "./postcss.config.js",
+    },
     build: {
       outDir: "dist",
       emptyOutDir: true,

@@ -16,8 +16,6 @@ const App: React.FC = () => {
 
   const checkGitHubAuth = async () => {
     try {
-      // TODO: 實現 GitHub OAuth 授權
-      // 臨時使用：從 chrome.storage 獲取 token
       chrome.storage.sync.get(["github_token"], async result => {
         if (result.github_token) {
           const username = await getCurrentUsername();
@@ -75,9 +73,8 @@ const App: React.FC = () => {
   };
 
   const handleLogin = () => {
-    // TODO: 實現 GitHub OAuth 登入
-    const clientId = process.env.GITHUB_CLIENT_ID;
-    const redirectUri = chrome.runtime.getURL("oauth.html");
+    const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID;
+    const redirectUri = chrome.runtime.getURL("src/oauth/index.html");
     const scope = "repo";
 
     const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
@@ -91,20 +88,23 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="w-[600px] p-4 bg-white dark:bg-gray-800">
+    <div className="w-[600px] min-h-[400px] p-4 bg-white dark:bg-gray-800">
       <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">GitHub Profile Generator</h1>
 
-      {error && <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg">{error}</div>}
+      {error && <div className="mb-4 p-3 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100 rounded-lg">{error}</div>}
 
       {!githubData ? (
-        <Button className="w-full mb-4" onClick={handleLogin}>
-          登入 GitHub
-        </Button>
+        <div className="flex flex-col items-center justify-center h-[300px]">
+          <p className="mb-4 text-gray-600 dark:text-gray-400">請先登入 GitHub 以使用此功能</p>
+          <Button className="w-48" onClick={handleLogin}>
+            登入 GitHub
+          </Button>
+        </div>
       ) : (
         <div className="space-y-4">
           <div className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-            <h2 className="font-semibold mb-2">GitHub 統計</h2>
-            <div className="grid grid-cols-2 gap-2">
+            <h2 className="font-semibold mb-2 text-gray-900 dark:text-white">GitHub 統計</h2>
+            <div className="grid grid-cols-2 gap-2 text-gray-600 dark:text-gray-300">
               <div>用戶名：{githubData.username}</div>
               <div>倉庫數：{githubData.repos}</div>
               <div>關注者：{githubData.followers}</div>
@@ -119,7 +119,7 @@ const App: React.FC = () => {
           {generatedProfile && (
             <>
               <div className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <h2 className="font-semibold mb-2">預覽</h2>
+                <h2 className="font-semibold mb-2 text-gray-900 dark:text-white">預覽</h2>
                 <div className="prose dark:prose-invert max-w-none">
                   <ReactMarkdown>{generatedProfile}</ReactMarkdown>
                 </div>

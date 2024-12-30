@@ -6,7 +6,7 @@ class OpenAIService {
 
   constructor(apiKey?: string) {
     this.openai = new OpenAI({
-      apiKey: apiKey || process.env.OPENAI_API_KEY,
+      apiKey: apiKey || import.meta.env.VITE_OPENAI_API_KEY,
     });
   }
 
